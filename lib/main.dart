@@ -1,6 +1,11 @@
+import 'package:buele_francis_7a_app/database/database_helper.dart';
+import 'package:buele_francis_7a_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await resetDatabase();
+  await DatabaseHelper.instance.init();
   runApp(const MainApp());
 }
 
@@ -10,11 +15,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }
